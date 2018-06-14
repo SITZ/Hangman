@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron py-3">
+        <div class="row">
+            <div class="col btn btn-light">
+                Max Score <br>
+                <span class="badge badge-info">{{ max_score }}</span>
+            </div>
+            <div class="col btn btn-light">
+                Lives <br>
+                <span class="badge badge-warning">{{ life_lines }}</span>
+            </div>
+            <div class="col btn btn-light">
+                Score <br>
+                <span class="badge badge-success">{{ life_lines }}</span>
+            </div>
+        </div>
+        <br>
+        <div class="row text-center text-monospace">
+            <div class="col">
+                <span class="display-1">{{ ' '.join(hangman_external) }}</span>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center align-items-center">
+            {% for ch in 'abcdefghijklmnopqrstuvwxyz' %}
+                <form action="/guess/{{ ch }}" method="post">
+                    <button type="submit" class="btn btn-secondary" {{ 'disabled' if ch in all_guesses }}>
+                        {{ ch }}
+                    </button>
+                </form>
+            {% endfor %}
+        </div>
+        <div class="row justify-content-center align-items-center">
+            {% for ch in '1234567890' %}
+                <form action="/guess/{{ ch }}" method="post">
+                    <button type="submit" class="btn btn-secondary" {{ 'disabled' if ch in all_guesses }}>
+                        {{ ch }}
+                    </button>
+                </form>
+            {% endfor %}
+        </div>
+    </div>
+    {% if '_' not in hangman_external %}
+        <div class="alert alert-success" role="alert">
+            Congratulations :) <br>
+            You saved the hangman.. Play again?
+        </div>
+    {% endif %}
+    {% if life_lines <= 0 %}
+        <div class="alert alert-danger" role="alert">
+            Sorry :( <br>
+            You ran of lifelines.. Try again?
+        </div>
+    {% endif %}
+    <div class="row" align="center">
+        <div class="col">
+            <form action="/reset" method="post">
+                <button type="submit" class="btn btn-warning">RESET</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

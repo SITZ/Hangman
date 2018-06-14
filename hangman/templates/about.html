@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <p>
+            Hangman is a guessing game for two or more players. One player (Computer) thinks of a word and the other
+            tries to guess it by suggesting letters or numbers, within a certain number of guesses.
+        </p>
+
+        <i>Details:</i>
+        <ul>
+            <li>
+                <pre>Max score</pre>
+                Highest score among all the rounds of game.
+            </li>
+            <br>
+            <li>
+                <pre>Lives</pre>
+                Maximum remaining tries which can be incorrect
+            </li>
+            <br>
+            <li>
+                <pre>Score</pre>
+                Score for the current round of game
+            </li>
+        </ul>
+    </div>
+{% endblock %}
