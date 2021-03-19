@@ -8,7 +8,7 @@ funcsigs==1.0.2
 ## !! Could not determine repository location
 Hangman==1.0
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 MarkupSafe==1.0
 more-itertools==4.2.0
 pluggy==0.6.0
